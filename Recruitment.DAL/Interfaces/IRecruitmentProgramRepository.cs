@@ -7,7 +7,7 @@ namespace Recruitment.DAL.Interfaces
         Task<IEnumerable<RecruitmentProgram>> GetAll();
         Task<RecruitmentProgram> GetById(Guid id);
         Task Add(RecruitmentProgram recruitmentProgram);        
-        void Update(RecruitmentProgram recruitmentProgram);
-        void Delete(RecruitmentProgram recruitmentProgram);
+        Task Update(RecruitmentProgram recruitmentProgram);
+        Task Delete(RecruitmentProgram recruitmentProgram);
     }
 }

@@ -14,15 +14,6 @@ namespace Recruitment.DAL
         public DbSet<Answer>? Answers { get; set; }
         public DbSet<Candidate>? Candidates { get; set; }
 
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseCosmos(
-                "https://localhost:8081",
-                "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==",
-                "Dotnet-db");
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<RecruitmentProgram>()
@@ -40,6 +31,9 @@ namespace Recruitment.DAL
             modelBuilder.Entity<Candidate>()
                 .ToContainer("Candidates")
                 .HasPartitionKey(e => e.Id);
+
+            //modelBuilder.Entity<Candidate>().OwnsMany(a => a.Answers);       
+            //modelBuilder.Entity<RecruitmentProgram>().OwnsMany(a => a.Questions); 
         }
     }
 }

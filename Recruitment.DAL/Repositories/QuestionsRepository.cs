@@ -12,7 +12,7 @@ namespace Recruitment.DAL.Repositories
 
         public async Task<Question> GetById(Guid id)
         {
-            return await _context.Questions?.Where(e => e.Id == id)?.FirstOrDefaultAsync();
+            return await _context.Questions?.AsNoTracking().Where(e => e.Id == id)?.FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Question>> GetAll()
@@ -26,13 +26,19 @@ namespace Recruitment.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async void Update(Question question)
+        public async Task AddRange(List<Question> questions)
+        {
+            _context.Questions?.AddRangeAsync(questions);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(Question question)
         {
             _context.Questions?.Update(question);
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(Question question)
+        public async Task Delete(Question question)
         {
             _context.Questions?.Remove(question);
             await _context.SaveChangesAsync();

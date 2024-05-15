@@ -14,7 +14,7 @@ namespace Recruitment.DAL.Repositories
 
         public async Task<Candidate> GetById(Guid id)
         {
-            return await _context.Candidates?.Where(e => e.Id == id).FirstOrDefaultAsync();
+            return await _context.Candidates?.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task Add(Candidate candidate)
@@ -23,13 +23,13 @@ namespace Recruitment.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async void Update(Candidate candidate)
+        public async Task Update(Candidate candidate)
         {
             _context.Candidates?.Update(candidate);
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(Candidate candidate)
+        public async Task Delete(Candidate candidate)
         {
             _context.Candidates?.Remove(candidate);
             await _context.SaveChangesAsync();

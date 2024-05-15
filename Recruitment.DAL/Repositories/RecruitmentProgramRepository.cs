@@ -4,7 +4,7 @@ using Recruitment.Models;
 
 namespace Recruitment.DAL.Repositories
 {
-    internal class RecruitmentProgramRepository : IRecruitmentProgramRepository
+    public class RecruitmentProgramRepository : IRecruitmentProgramRepository
     {
         private readonly RecruitmentContext _context;
 
@@ -12,7 +12,7 @@ namespace Recruitment.DAL.Repositories
 
         public async Task<RecruitmentProgram> GetById(Guid id)
         {
-            return await _context.RecruitmentPrograms?.Where(e => e.Id == id)?.FirstOrDefaultAsync();
+            return await _context.RecruitmentPrograms?.AsNoTracking().Where(e => e.Id == id)?.FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<RecruitmentProgram>> GetAll()
@@ -26,13 +26,13 @@ namespace Recruitment.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async void Update(RecruitmentProgram recruitmentProgram)
+        public async Task Update(RecruitmentProgram recruitmentProgram)
         {
             _context.RecruitmentPrograms?.Update(recruitmentProgram);
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(RecruitmentProgram recruitmentProgram)
+        public async Task Delete(RecruitmentProgram recruitmentProgram)
         {
             _context.RecruitmentPrograms?.Remove(recruitmentProgram);
             await _context.SaveChangesAsync();

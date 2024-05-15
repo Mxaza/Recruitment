@@ -1,8 +1,12 @@
-﻿namespace Recruitment.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Recruitment.Models
 {
+    [Owned]
     public class Answer
     {
         public Guid Id { get; set; }
+        public Guid RecruitmentProgramId { get; set; }
         public Guid QuestionId { get; set; }
         public string AnswerValue { get; set; }
     }

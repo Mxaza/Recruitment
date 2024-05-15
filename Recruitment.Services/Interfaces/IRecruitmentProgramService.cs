@@ -5,11 +5,11 @@ namespace Recruitment.Services.Interfaces
 {
     public interface IRecruitmentProgramService
     {
-        IEnumerable<RecruitmentProgram> GetAll();
-        RecruitmentProgram GetById(Guid id);
-        ResponseMessage Add(RecruitmentProgram recruitmentProgram);    
-        ResponseMessage Update(Guid id, RecruitmentProgram recruitmentProgram);
-        ResponseMessage Delete(Guid id);
-        ResponseMessage SubmitApplication(ApplicationDTO applicationDTO);
+        Task<IEnumerable<RecruitmentProgram>> GetAll();
+        Task<RecruitmentProgram> GetById(Guid id);
+        Task<ResponseMessage> Add(RecruitmentProgramDTO recruitmentProgramDTO);
+        Task<ResponseMessage> Update(Guid id, RecruitmentProgram recruitmentProgram);
+        Task<ResponseMessage> Delete(Guid id);
+        Task<ResponseMessage> SubmitApplication(ApplicationDTO applicationDTO);
     }
 }

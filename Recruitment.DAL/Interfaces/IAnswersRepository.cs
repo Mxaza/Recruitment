@@ -7,7 +7,8 @@ namespace Recruitment.DAL.Interfaces
         Task<IEnumerable<Answer>> GetAll();
         Task<Answer> GetById(Guid id);
         Task Add(Answer answer);           
-        void Update(Answer answer);
-        void Delete(Answer answer);
+        Task AddRange(List<Answer> answer);           
+        Task Update(Answer answer);
+        Task Delete(Answer answer);
     }
 }
