@@ -32,13 +32,13 @@ namespace Recruitment.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async void Update(Answer answer)
+        public async Task Update(Answer answer)
         {
             _context.Answers?.Update(answer);
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(Answer answer)
+        public async Task Delete(Answer answer)
         {
             _context.Answers?.Remove(answer);
             await _context.SaveChangesAsync();
