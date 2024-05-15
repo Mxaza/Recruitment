@@ -23,11 +23,13 @@ builder.Services.AddDbContext<RecruitmentContext>(options =>
 
 // Repositories
 builder.Services.AddScoped<IQuestionsRepository, QuestionsRepository>();
+builder.Services.AddScoped<IRecruitmentProgramRepository, RecruitmentProgramRepository>();
+builder.Services.AddScoped<IAnswersRepository, AnswersRepository>();
+builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
 
 // Services
 builder.Services.AddScoped<IQuestionsService, QuestionsService>();
-
-
+builder.Services.AddScoped<IRecruitmentProgramService, RecruitmentProgramService>();
 
 var app = builder.Build();
 

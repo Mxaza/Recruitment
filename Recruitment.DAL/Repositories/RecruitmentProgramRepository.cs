@@ -4,7 +4,7 @@ using Recruitment.Models;
 
 namespace Recruitment.DAL.Repositories
 {
-    internal class RecruitmentProgramRepository : IRecruitmentProgramRepository
+    public class RecruitmentProgramRepository : IRecruitmentProgramRepository
     {
         private readonly RecruitmentContext _context;
 

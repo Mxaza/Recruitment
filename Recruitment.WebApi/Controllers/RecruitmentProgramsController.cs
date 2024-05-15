@@ -23,7 +23,7 @@ namespace Recruitment.WebApi.Controllers
         {
             try
             {
-                var result = _service.GetAll();
+                var result = await _service.GetAll();
                 if (result == null)
                     return NotFound();
 
@@ -41,7 +41,7 @@ namespace Recruitment.WebApi.Controllers
         {
             try
             {
-                var result = _service.GetById(id);
+                var result = await _service.GetById(id);
                 if (result == null)
                     return NotFound();
 
@@ -62,7 +62,7 @@ namespace Recruitment.WebApi.Controllers
 
             try
             {   
-                ResponseMessage responseMessage = _service.Add(recruitmentProgram);
+                ResponseMessage responseMessage = await _service.Add(recruitmentProgram);
                 return StatusCode(responseMessage.ResponseCode, responseMessage.Message);
             }
             catch (Exception ex)
@@ -80,7 +80,7 @@ namespace Recruitment.WebApi.Controllers
 
             try
             {
-                ResponseMessage responseMessage = _service.Update(id, recruitmentProgram);
+                ResponseMessage responseMessage = await _service.Update(id, recruitmentProgram);
                 return StatusCode(responseMessage.ResponseCode, responseMessage.Message);
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace Recruitment.WebApi.Controllers
         {
             try
             {
-                ResponseMessage responseMessage = _service.Delete(id);
+                ResponseMessage responseMessage = await _service.Delete(id);
                 return StatusCode(responseMessage.ResponseCode, responseMessage.Message);
             }
             catch (Exception ex)
@@ -107,13 +107,13 @@ namespace Recruitment.WebApi.Controllers
         }
 
         [HttpPost("Submit")]
-        public IActionResult SubmitApplication([FromBody] ApplicationDTO applicationDTO)
+        public async Task<IActionResult> SubmitApplication([FromBody] ApplicationDTO applicationDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             try
             {
-                ResponseMessage response = _service.SubmitApplication(applicationDTO);
+                ResponseMessage response = await _service.SubmitApplication(applicationDTO);
 
                 return StatusCode(response.ResponseCode, response.Message);
             }

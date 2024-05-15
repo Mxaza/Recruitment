@@ -6,13 +6,13 @@ using Recruitment.Services.Interfaces;
 
 namespace Recruitment.Services.Implementations
 {
-    public class RecruitmentProgramsService 
+    public class RecruitmentProgramService : IRecruitmentProgramService
     {
         private readonly IRecruitmentProgramRepository _recruitmentProgramRepository;
         private readonly ICandidateRepository _candidateRepository;
         private readonly IAnswersRepository _answersRepository;
 
-        public RecruitmentProgramsService(IRecruitmentProgramRepository recruitmentProgramRepository, 
+        public RecruitmentProgramService(IRecruitmentProgramRepository recruitmentProgramRepository, 
             ICandidateRepository candidateRepository, IAnswersRepository answersRepository)
         {
             _recruitmentProgramRepository = recruitmentProgramRepository;
