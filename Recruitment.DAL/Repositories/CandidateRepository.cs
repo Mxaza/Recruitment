@@ -23,13 +23,13 @@ namespace Recruitment.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async void Update(Candidate candidate)
+        public async Task Update(Candidate candidate)
         {
             _context.Candidates?.Update(candidate);
             await _context.SaveChangesAsync();
         }
 
-        public async void Delete(Candidate candidate)
+        public async Task Delete(Candidate candidate)
         {
             _context.Candidates?.Remove(candidate);
             await _context.SaveChangesAsync();
