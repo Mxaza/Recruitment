@@ -59,6 +59,9 @@ namespace Recruitment.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] QuestionDTO questionDTO)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             try
             {
                 var question = new Question
@@ -80,6 +83,9 @@ namespace Recruitment.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] Question question)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             try
             {
                 ResponseMessage responseMessage = await _service.Update(id, question);
@@ -95,6 +101,9 @@ namespace Recruitment.WebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             try
             {
                 ResponseMessage responseMessage = await _service.Delete(id);
