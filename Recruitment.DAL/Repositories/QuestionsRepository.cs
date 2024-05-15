@@ -26,6 +26,12 @@ namespace Recruitment.DAL.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task AddRange(List<Question> questions)
+        {
+            _context.Questions?.AddRangeAsync(questions);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task Update(Question question)
         {
             _context.Questions?.Update(question);

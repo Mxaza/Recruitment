@@ -55,14 +55,14 @@ namespace Recruitment.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] RecruitmentProgram recruitmentProgram)
+        public async Task<IActionResult> Add([FromBody] RecruitmentProgramDTO recruitmentProgramDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
-            {   
-                ResponseMessage responseMessage = await _service.Add(recruitmentProgram);
+            {                  
+                ResponseMessage responseMessage = await _service.Add(recruitmentProgramDTO);
                 return StatusCode(responseMessage.ResponseCode, responseMessage.Message);
             }
             catch (Exception ex)

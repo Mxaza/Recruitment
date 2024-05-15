@@ -31,6 +31,9 @@ namespace Recruitment.DAL
             modelBuilder.Entity<Candidate>()
                 .ToContainer("Candidates")
                 .HasPartitionKey(e => e.Id);
+
+            //modelBuilder.Entity<Candidate>().OwnsMany(a => a.Answers);       
+            //modelBuilder.Entity<RecruitmentProgram>().OwnsMany(a => a.Questions); 
         }
     }
 }

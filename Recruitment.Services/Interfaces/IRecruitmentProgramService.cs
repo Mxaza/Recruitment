@@ -7,7 +7,7 @@ namespace Recruitment.Services.Interfaces
     {
         Task<IEnumerable<RecruitmentProgram>> GetAll();
         Task<RecruitmentProgram> GetById(Guid id);
-        Task<ResponseMessage> Add(RecruitmentProgram recruitmentProgram);
+        Task<ResponseMessage> Add(RecruitmentProgramDTO recruitmentProgramDTO);
         Task<ResponseMessage> Update(Guid id, RecruitmentProgram recruitmentProgram);
         Task<ResponseMessage> Delete(Guid id);
         Task<ResponseMessage> SubmitApplication(ApplicationDTO applicationDTO);
