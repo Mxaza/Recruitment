@@ -4,10 +4,10 @@ namespace Recruitment.Services.Interfaces
 {
     public interface IQuestionsService
     {
-        ResponseMessage Add(Question question);
-        ResponseMessage Delete(Guid id);
-        IEnumerable<Question> GetAll();
-        Question GetById(Guid id);
-        ResponseMessage Update(Guid id, Question question);
+        Task<ResponseMessage> Add(Question question);        
+        Task<IEnumerable<Question>> GetAll();
+        Task<Question> GetById(Guid id);
+        Task<ResponseMessage> Update(Guid id, Question question);
+        Task<ResponseMessage> Delete(Guid id);
     }
 }

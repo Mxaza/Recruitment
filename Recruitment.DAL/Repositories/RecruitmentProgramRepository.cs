@@ -12,7 +12,7 @@ namespace Recruitment.DAL.Repositories
 
         public async Task<RecruitmentProgram> GetById(Guid id)
         {
-            return await _context.RecruitmentPrograms?.Where(e => e.Id == id)?.FirstOrDefaultAsync();
+            return await _context.RecruitmentPrograms?.AsNoTracking().Where(e => e.Id == id)?.FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<RecruitmentProgram>> GetAll()

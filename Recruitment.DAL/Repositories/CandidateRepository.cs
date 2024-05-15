@@ -14,7 +14,7 @@ namespace Recruitment.DAL.Repositories
 
         public async Task<Candidate> GetById(Guid id)
         {
-            return await _context.Candidates?.Where(e => e.Id == id).FirstOrDefaultAsync();
+            return await _context.Candidates?.AsNoTracking().Where(e => e.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task Add(Candidate candidate)
