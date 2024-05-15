@@ -9,7 +9,7 @@ namespace Recruitment.DAL
         {
         }
 
-        public DbSet<RecruitmentProgram>? RecruitmentProgram { get; set; }
+        public DbSet<RecruitmentProgram>? RecruitmentPrograms { get; set; }
         public DbSet<Question>? Questions { get; set; }
         public DbSet<Answer>? Answers { get; set; }
         public DbSet<Candidate>? Candidates { get; set; }
